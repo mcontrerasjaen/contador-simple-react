@@ -1,3 +1,64 @@
+* {
+    background-color: grey;
+}
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+
+.main {
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    height: 100vh;           
+    width: 100%;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px; /* Espacio entre el contador y los botones */
+}
+
+/* Grupo de botones en línea */
+.button-group {
+    display: flex;
+    gap: 15px;
+}
+
+/* Estilo base para los botones Negros */
+.btn-control {
+    background-color: #000; /* Fondo negro */
+    color: #ffffff;         /* Texto blanco */
+    border: 1px solid #444; /* Borde gris oscuro sutil */
+    padding: 10px 25px;
+    font-family: 'Orbitron', sans-serif; /* La fuente digital */
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+/* Efecto al pasar el ratón (Hover) */
+.btn-control:hover {
+    border-color: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Estilo específico para el botón de REINICIAR */
+.btn-reset {
+    color: #ff4d4d;         /* Texto rojo */
+    border-color: #331111;  /* Borde rojizo oscuro */
+}
+
+.btn-reset:hover {
+    border-color: #ff4d4d;
+    box-shadow: 0 0 10px rgba(255, 77, 77, 0.3);
+}
 /* 
 
     You can write your own styles here...
@@ -9,3 +70,4 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+

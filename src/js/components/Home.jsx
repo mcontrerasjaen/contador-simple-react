@@ -1,28 +1,62 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import SecondsCounter from "./SecondsCounter";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
-//create your first component
 const Home = () => {
-	return (
-		<div className="text-center">
-            
+    const [seconds, setSeconds] = useState(0);
+    const [isCountdown, setIsCountdown] = useState(false);
+	const [active, setActive] = useState(true);
 
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
-	);
+
+   useEffect(() => {
+        let interval = null;
+
+        if (active) {
+            interval = setInterval(() => {
+                setSeconds(prev => {
+                    
+                    if (prev === 50 && !isCountdown) {
+                        const respuesta = window.confirm("¿Quieres empezar la cuenta regresiva?");
+                        if (respuesta) {
+                            setIsCountdown(true);
+                            return prev - 1;
+                        }
+                    }
+                    
+                    if (isCountdown) {
+                        return prev > 0 ? prev - 1 : 0;
+                    }
+                    return prev + 1;
+                });
+            }, 1000);
+        } else {
+            clearInterval(interval);
+        }
+
+        return () => clearInterval(interval);
+    }, [active, isCountdown]); 
+
+    // FUNCIONES DE CONTROL
+    const handleStop = () => setActive(false);
+    const handleResume = () => setActive(true);
+    const handleReset = () => {
+    setSeconds(0);         
+    setIsCountdown(false); 
+    setActive(true);       
+};
+
+    return (
+    <div className="main">
+        <div className="content-container"> 
+            <SecondsCounter seconds={seconds} />
+            
+            <div className="button-group">
+                <button className="btn-control" onClick={handleStop}>Parar</button>
+                <button className="btn-control" onClick={handleResume}>Resumir</button>
+                <button className="btn-control btn-reset" onClick={handleReset}>Reiniciar</button>
+            </div>
+        </div>
+    </div>
+);
 };
 
 export default Home;
