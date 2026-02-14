@@ -35,7 +35,7 @@ const Home = () => {
         return () => clearInterval(interval);
     }, [active, isCountdown]); 
 
-    // FUNCIONES DE CONTROL
+    
     const handleStop = () => setActive(false);
     const handleResume = () => setActive(true);
     const handleReset = () => {
