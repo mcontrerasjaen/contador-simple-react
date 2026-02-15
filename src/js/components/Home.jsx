@@ -41,7 +41,7 @@ const Home = () => {
     const handleReset = () => {
     setSeconds(0);         
     setIsCountdown(false); 
-    setActive(true);       
+    setActive(false);       
 };
 
     return (
