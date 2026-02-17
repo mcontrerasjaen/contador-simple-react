@@ -14,7 +14,7 @@ const Home = () => {
             interval = setInterval(() => {
                 setSeconds(prev => {
                     
-                    if (prev === 50 && !isCountdown) {
+                    if (prev === 20 && !isCountdown) {
                         const respuesta = window.confirm("¿Quieres empezar la cuenta regresiva?");
                         if (respuesta) {
                             setIsCountdown(true);
